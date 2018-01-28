@@ -15,8 +15,8 @@ export class DataService {
 
   }
 
-  deleteContactData() {
-
+  deleteCompanyFromAPI(id) {
+    return this.http.delete('http://devapp.telenotes.com/api/data/zach-mitchell/' + id);
   }
 
   updateContactData() {

@@ -40,7 +40,15 @@ export class ContactsComponent implements OnInit {
   }
 
   addNewContact(contact) {
-    console.log(contact)
+    console.log(contact);
+  }
+
+  deleteCompanyFromAPI(id) {
+    this.dataService.deleteCompanyFromAPI(id).subscribe(
+      () => {
+        console.log('testing');
+      }
+    );
   }
 
 }
