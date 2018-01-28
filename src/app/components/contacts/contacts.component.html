@@ -1,0 +1,59 @@
+<header>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span></span>
+    </div>
+    <ul class="nav-menu">
+      <a class="nav-link">
+          <span></span>
+          <li class="nav-item">Companies</li>
+      </a>
+      <a class="nav-link">
+          <span></span>
+          <li class="nav-item">Contacts</li>
+      </a>
+      <a class="nav-link">
+          <span></span>
+          <li class="nav-item">Settings</li>
+      </a>
+      <a class="nav-link">
+          <span></span>
+          <li class="nav-item">Help</li>
+      </a>
+    </ul>
+  </nav>
+</header>
+
+<div class="filter">
+  <div class="filter-sort">
+    <div class="filter-contact"></div>
+    <div class="filter-company"></div>
+  </div>
+  <div class="filter-location">
+    <div class="filter-city"></div>
+  </div>
+
+  <div class="search">
+    <input name="search" placeholder="Who are you looking for...?"/>
+  </div>
+  
+  <form class="new-contact-form" [formGroup]="rForm" (ngSubmit)="addNewContact(rForm.value)" ngNativeValidate>
+    <input formControlName="name" placeholder="Enter name" required />
+    <input formControlName="city" placeholder="Enter city" required />
+    <input formControlName="position" placeholder="Enter position" required />
+    <input formControlName="company" placeholder="Enter company" required />
+    <input formControlName="phone" placeholder="Enter phone" required />
+    <button class="new-contact-submit">Submit</button>
+  </form>
+</div>
+
+<div class="contact" *ngFor="let contact of contactData">
+  <div class="contact-content">
+      <div class="contact-initials"></div>
+      <div class="contact-name"></div>
+      <div class="contact-city"></div>
+      <hr>
+      <div class="contact-position"></div>
+      <div class="contact-company">{{ contact.CompanyName }}</div>
+  </div>
+</div>
