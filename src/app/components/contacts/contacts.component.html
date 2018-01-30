@@ -1,60 +1,126 @@
-<header>
-  <nav class="navbar">
-    <div class="nav-brand">
-      <span></span>
-    </div>
-    <ul class="nav-menu">
-      <a class="nav-link">
-          <span></span>
-          <li class="nav-item">Companies</li>
-      </a>
-      <a class="nav-link">
-          <span></span>
-          <li class="nav-item">Contacts</li>
-      </a>
-      <a class="nav-link">
-          <span></span>
-          <li class="nav-item">Settings</li>
-      </a>
-      <a class="nav-link">
-          <span></span>
-          <li class="nav-item">Help</li>
-      </a>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <div class="navbar-logo"></div>
+  </div>
+
+  <div class="navbar-menu">
+    <ul class="navbar-menu-list">
+      <li class="navbar-item">
+        <i class="material-icons">business</i>
+        <a class="navbar-link" href="#">Companies</a>
+      </li>
+      <li class="navbar-item active">
+        <i class="material-icons">group</i>
+        <a class="navbar-link" href="#">Contacts</a>
+      </li>
+      <li class="navbar-item">
+        <i class="material-icons">settings</i>
+        <a class="navbar-link" href="#">Settings</a>
+      </li>
+      <li class="navbar-item">
+        <i class="material-icons">info</i>
+        <a class="navbar-link" href="#">Help Docs</a>
+      </li>
     </ul>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <div class="filter">
-  <div class="filter-sort">
-    <div class="filter-contact"></div>
-    <div class="filter-company"></div>
-  </div>
-  <div class="filter-location">
-    <div class="filter-city"></div>
-  </div>
+  <div class="filter-content">
 
-  <div class="search">
-    <input name="search" placeholder="Who are you looking for...?"/>
+    <div class="filter-sort">
+      <h4 class="filter-sort-title">Sort By</h4>
+      <div class="filter-contact">Contact Name</div>
+      <div class="filter-company active">Company Name</div>
+    </div>
+
+    <div class="filter-location">
+        <h4 class="filter-location-title">Location</h4>
+        <select class="filter-city">
+            <option value="new-york">New York</option>
+        </select>
+    </div>
+    
+    <div class="filter-form">
+      <h4 class="filter-form-title">Add New Contact</h4>
+      <form class="new-contact-form" [formGroup]="rForm" (ngSubmit)="addNewContact(rForm.value)" ngNativeValidate>
+
+        <div class="form-inline-group">
+          <div class="form-group filter-firstname-group">
+            <label class="filter-form-label">First Name</label>
+            <input class="filter-form-input" formControlName="firstname" required />
+          </div>
+
+          <div class="form-group filter-lastname-group">
+            <label class="filter-form-label">Last Name</label>
+            <input class="filter-form-input" formControlName="lastname" required />
+          </div>
+        </div>
+      
+        <div class="form-inline-group">
+          <div class="form-group filter-phone-group">
+            <label class="filter-form-label">Phone</label>
+            <input class="filter-form-input" formControlName="phone" required />
+          </div>
+          
+          <div class="form-group filter-email-group">
+            <label class="filter-form-label">Email</label>
+            <input class="filter-form-input" formControlName="email" required />
+          </div>
+        </div>
+        
+        
+        <div class="form-group filter-position-group">
+          <label class="filter-form-label">Position</label>
+          <input class="filter-form-input" formControlName="position" required />
+        </div>
+
+        <div class="form-group filter-company-group">
+          <label class="filter-form-label">Company</label>
+          <input class="filter-form-input" formControlName="company" required />
+        </div>
+
+        <div class="form-group filter-city-group">
+          <label class="filter-form-label">City</label>
+          <input class="filter-form-input" formControlName="city" required />
+        </div>
+
+        <button class="new-contact-submit">Submit</button>
+      </form>
+    </div>
+
   </div>
-  
-  <form class="new-contact-form" [formGroup]="rForm" (ngSubmit)="addNewContact(rForm.value)" ngNativeValidate>
-    <input formControlName="name" placeholder="Enter name" required />
-    <input formControlName="city" placeholder="Enter city" required />
-    <input formControlName="position" placeholder="Enter position" required />
-    <input formControlName="company" placeholder="Enter company" required />
-    <input formControlName="phone" placeholder="Enter phone" required />
-    <button class="new-contact-submit">Submit</button>
-  </form>
 </div>
 
-<div class="contact" *ngFor="let contact of contactData">
-  <div class="contact-content">
-      <div class="contact-initials"></div>
-      <div class="contact-name"></div>
-      <div class="contact-city"></div>
-      <hr>
-      <div class="contact-position"></div>
-      <div class="contact-company">{{ contact.CompanyName }}</div>
-      <button class="contact-delete" (click)="deleteCompanyFromAPI(contact.CompanyID)">Delete</button>
-  </div>
+<div class="search">
+  <input class="search-input" name="search" placeholder="Who are you looking for...?"/>
+</div>
+
+<div class="contact">
+  <ng-container *ngFor="let company of contactData">
+    <div class="contact-box" *ngFor="let contact of company.Contacts">
+      <div class="contact-content">
+        <div class="contact-name">{{ contact.firstname }} {{ contact.LastName }}</div>
+        <div class="contact-company">{{ company.CompanyName }}</div>
+        <hr class="contact-break">
+        <div class="contact-position-wrap">
+          <i class="material-icons">business_center</i>
+          <p class="contact-position contact-item">{{ contact.title }}</p>
+        </div>
+        <div class="contact-city-wrap">
+          <i class="material-icons">home</i>
+          <p class="contact-city contact-item">{{ contact.ContactCity }}</p>
+        </div>
+        <div class="contact-phone-wrap">
+          <i class="material-icons">phone</i>
+          <p class="contact-phone contact-item">{{ contact.PrimaryPhone }}</p>
+        </div>
+        <div class="contact-email-wrap">
+          <i class="material-icons">email</i>
+          <p class="contact-email contact-item">{{ contact.email }}</p>
+        </div>
+        <button class="contact-delete contact-item" (click)="deleteCompanyFromAPI(company.CompanyID)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
 </div>

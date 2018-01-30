@@ -13,19 +13,23 @@ export class ContactsComponent implements OnInit {
   contactData:any;
   rForm: FormGroup;
   post:any;
-  name:string = '';
-  city:string = '';
-  position:string = '';
+  firstname:string = '';
+  lastname:string = '';
   company:string = '';
+  position:string = '';
+  city:string = '';
   phone:string = '';
+  email:string = '';
 
   constructor(private fb: FormBuilder, private dataService: DataService) {
     this.rForm = fb.group({
-      'name': [null, Validators.required],
-      'city': [null, Validators.required],
-      'position': [null, Validators.required],
+      'firstname': [null, Validators.required],
+      'lastname': [null, Validators.required],
       'company': [null, Validators.required],
-      'phone': [null, Validators.required]
+      'position': [null, Validators.required],
+      'city': [null, Validators.required],
+      'phone': [null, Validators.required],
+      'email': [null, Validators.required]
     });
   }
 
@@ -40,13 +44,41 @@ export class ContactsComponent implements OnInit {
   }
 
   addNewContact(contact) {
-    console.log(contact);
+    this.firstname = contact.firstname;
+    this.lastname = contact.lastname;
+    this.company = contact.company;
+    this.position = contact.position;
+    this.city = contact.city;
+    this.phone = contact.phone;
+    this.email = contact.email;
+
+    const companyData = {
+      CompanyName: this.company,
+      contacts: [
+        {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          title: this.position,
+          ContactCity: this.city,
+          PrimaryPhone: this.phone,
+          email: this.email
+        },
+      ]
+    };
+
+    console.log(companyData);
+
+    this.dataService.addNewContact(companyData).subscribe(
+      () => {
+        console.log('new contact added');
+      }
+    );
   }
 
   deleteCompanyFromAPI(id) {
     this.dataService.deleteCompanyFromAPI(id).subscribe(
       () => {
-        console.log('testing');
+        console.log('company deleted');
       }
     );
   }

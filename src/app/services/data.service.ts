@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class DataService {
@@ -11,8 +11,9 @@ export class DataService {
     return this.http.get('http://devapp.telenotes.com/api/data/zach-mitchell');
   }
 
-  postContactData() {
-
+  addNewContact(companyData) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put('http://devapp.telenotes.com/api/data/zach-mitchell', JSON.stringify({ companyData }), { headers });
   }
 
   deleteCompanyFromAPI(id) {

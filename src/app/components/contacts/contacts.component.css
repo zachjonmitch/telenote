@@ -1,0 +1,273 @@
+.navbar {
+  position: fixed;
+  background-color: #020924;
+  width: 120px;
+  height: 100%;
+  color: white;
+}
+
+.navbar-brand {
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #0D142F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 36px;
+  height: 41px;
+  background-image: url('../../../assets/telenotes-tag.png');
+  background-size: cover;
+}
+
+.navbar-menu {
+  width: 100%;
+  height: auto;
+  margin-top: 160px;
+}
+
+.navbar-menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 100px;
+}
+
+.navbar-link {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding-top: 20px;
+  line-height: 120px;
+  position: relative;
+}
+
+.navbar-item {
+  position: relative;
+  height: 120px;
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #4B5063;
+  text-align: center;
+}
+
+.navbar-item .material-icons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 19px;
+  font-size: 35px;
+}
+
+.navbar-item.active {
+  background: #2872DA;
+  color: white;
+}
+
+.navbar-item.active:hover {
+  opacity: .7;
+}
+
+.navbar-item:hover {
+  color: white;
+}
+
+.filter {
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  margin-left: 80px;
+}
+
+.filter-content {
+  width: 100%;
+  height: auto;
+  margin-top: 205px;
+  padding-left: 100px;
+}
+
+.filter-sort {
+  padding-bottom: 5px;
+}
+
+.filter-contact,
+.filter-company {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.filter-company.active {
+  color: #2872DA;
+}
+
+.filter-location {
+  padding-bottom: 20px;
+}
+
+.filter-city {
+  width: 300px;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #2872DA;
+  color: #2872DA;
+  cursor: pointer;
+}
+
+.new-contact-form {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-position-group,
+.filter-company-group,
+.filter-city-group {
+  width: 100%;
+}
+
+.filter-form-label {
+  display: block;
+  font-size: 1.2rem;
+  padding-top: 8px;
+  padding-bottom: 2px;
+}
+
+.filter-form-input {
+  display: block;
+  width: 100%;
+  height: 25px;
+  border: 1px solid #ddd;
+}
+
+.filter .form-inline-group {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-firstname-group,
+.filter-lastname-group,
+.filter-phone-group,
+.filter-email-group {
+  width: 50%;
+}
+
+.filter .new-contact-submit {
+  width: 100%;
+  background-color: #2872DA;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.filter .new-contact-submit:hover {
+  opacity: .9;
+}
+
+.search {
+  height: 200px;
+  width: 800px;
+  margin-left: 555px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Maven Pro';
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #020924;
+  text-transform: uppercase;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.contact {
+  width: 900px;
+  margin-left: 550px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-box {
+  width: 33%;
+  height: 300px;
+  padding: 2px;
+}
+
+.contact-content {
+  width: 100%;
+  height: 100%;
+  padding: 46px 30px 44px 55px;
+  border: 1px solid #ddd;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.contact-name {
+  font-size: 2rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.contact-company {
+  font-size: 1.5rem;
+}
+
+.contact-break {
+  width: 30%;
+  border-top: 3px solid #2872DA;
+  margin: 20px 0;
+}
+
+.contact-item {
+  display: inline-block;
+  margin: 0;
+  opacity: .6;
+  padding-top: 2px;
+  padding-left: 8px;
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+
+.contact .material-icons {
+  font-size: 17px;
+  opacity: .6;
+  vertical-align: middle;
+}
+
+.contact-delete {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #EE4723;
+  opacity: .5;
+  cursor: pointer;
+}
+
+.contact-delete:hover {
+  opacity: .9;
+}
