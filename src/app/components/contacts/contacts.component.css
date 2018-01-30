@@ -271,3 +271,19 @@
 .contact-delete:hover {
   opacity: .9;
 }
+
+@media (min-width: 1200px) {
+
+  .filter {
+    margin-left: 150px;
+  }
+
+  .search {
+    margin-left: 705px;
+  }
+
+  .contact {
+    margin-left: 700px;
+  }
+
+}

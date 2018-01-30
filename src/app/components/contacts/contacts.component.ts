@@ -22,6 +22,7 @@ export class ContactsComponent implements OnInit {
   email:string = '';
 
   constructor(private fb: FormBuilder, private dataService: DataService) {
+    // Reactive Forms template group
     this.rForm = fb.group({
       'firstname': [null, Validators.required],
       'lastname': [null, Validators.required],
@@ -65,9 +66,7 @@ export class ContactsComponent implements OnInit {
         },
       ]
     };
-
-    console.log(companyData);
-
+    // Pass new-contact-form data to API
     this.dataService.addNewContact(companyData).subscribe(
       () => {
         console.log('new contact added');
@@ -76,6 +75,7 @@ export class ContactsComponent implements OnInit {
   }
 
   deleteCompanyFromAPI(id) {
+    // Pass company ID to API delete request
     this.dataService.deleteCompanyFromAPI(id).subscribe(
       () => {
         console.log('company deleted');
